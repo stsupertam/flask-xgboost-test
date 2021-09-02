@@ -1,0 +1,10 @@
+version: '3'
+services:
+  flask:
+    image: flask-xgboost
+    build: ./app
+    ports: 
+      - '5000:5000'
+    command: "gunicorn --bind 0.0.0.0:5000 wsgi --reload --chdir /app"
+    volumes:
+      - './app:/app'
